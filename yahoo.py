@@ -43,13 +43,52 @@ def get_alternative_standings():
 
     """
 
+def get_current_points(lg):
+    """ Get current points
+
+    Parameters
+    ----------
+    lg : yahoo_fantasy_api.League
+        An instance of the yahoo_fantasy_api League object
+        
+    Returns
+    ---------
+    dict {str: str}
+        {team key: points}
+
+    """
+
+    matchups_content = lg.matchups()
+
+    matchups = matchups_content['fantasy_content']['league'][1]['scoreboard']['0']['matchups']
+
+    foo = {}
+
+    for matchup in range(matchups['count']):
+
+        teams = matchups[str(matchup)]['matchup']['0']['teams']
+
+        for team in range(teams['count']):
+
+            team_key = teams[str(team)]['team'][0][0]['team_key']
+            team_points = teams[str(team)]['team'][1]['team_points']['total']
+
+            foo[team_key] = team_points
+
+    return foo
+
+
 def main():
-    lg = yfa.League(sc,league_id)
+
+    sc = _get_yahoo_api_session()
+
+    gm = yfa.Game(sc, 'nfl')
+    gm.league_ids(2018)
+    lg = gm.to_league('380.l.765649')
 
     lg.current_week()
 
-
-    lg.matchups()
+    get_current_points(lg)
 
     lg.standings()
 

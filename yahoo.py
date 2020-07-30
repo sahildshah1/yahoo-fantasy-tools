@@ -4,7 +4,6 @@
 Each week you will have to track which teams finished in the top half 
 of the league in scoring, and you’ll need to maintain a set of alternate 
 standings all season.
-
 """
 
 import statistics 
@@ -69,6 +68,24 @@ def get_top_half_teams(points):
     return {key for key,value in points.items() if float(value) > m}
 
 
+def get_current_standings(lg):
+    """ Get current standingss
+
+    Parameters
+    ----------
+    lg : yahoo_fantasy_api.League
+        An instance of the yahoo_fantasy_api League object
+        
+    Returns
+    ---------
+
+    """
+
+    standings_content = lg.standings()
+
+    return {bar['team_key']: bar['outcome_totals'] for bar in standings_content}
+
+
 
 def get_alternative_standings(standings, top_half_teams):
     """ foo
@@ -98,27 +115,9 @@ def get_alternative_standings(standings, top_half_teams):
 
     df['doubleheader_percentage'] = df['doubleheader_wins']/ (df['doubleheader_wins'] + df['doubleheader_losses'])
 
+    # df order by points 
 
-    df order by adjusted percentage 
-
-
-
-def get_current_standings(lg):
-    """ Get current standingss
-
-    Parameters
-    ----------
-    lg : yahoo_fantasy_api.League
-        An instance of the yahoo_fantasy_api League object
-        
-    Returns
-    ---------
-
-    """
-
-    standings_content = lg.standings()
-
-    return {bar['team_key']: bar['outcome_totals'] for bar in standings_content}
+    return df
 
 
 

@@ -392,7 +392,6 @@ def test_get_current_points():
   'copyright': 'Data provided by Yahoo! and STATS, LLC',
   'refresh_rate': '60'}}
 
-
     actual = yahoo.get_current_points(m_lg)
 
     expected = {'380.l.765649.t.1': '100.12',
@@ -406,6 +405,188 @@ def test_get_current_points():
 
     assert expected == actual
 
+def test_get_top_half_teams():
+
+  points = {'380.l.765649.t.1': '100.12',
+            '380.l.765649.t.3': '98.30',
+            '380.l.765649.t.4': '118.34',
+            '380.l.765649.t.10': '144.66',
+            '380.l.765649.t.5': '133.28',
+            '380.l.765649.t.8': '105.52',
+            '380.l.765649.t.6': '118.84',
+            '380.l.765649.t.7': '141.02'}
+
+  actual = yahoo.get_top_half_teams(points)
+
+  expected = {'380.l.765649.t.10',
+              '380.l.765649.t.5', 
+              '380.l.765649.t.6',
+              '380.l.765649.t.7'}
+
+
+  assert expected == actual
+
+
+
+def test_get_current_standings():
+    """Ensure get_current_standings returns correct answer
+    """
+
+    m_lg = Mock()
+
+    m_lg.standings.return_value = [{'team_key': '380.l.765649.t.10',
+    'name': 'Easy Drake oven',
+    'rank': 1,
+    'playoff_seed': '2',
+    'outcome_totals': {'wins': '10',
+     'losses': '4',
+     'ties': 0,
+     'percentage': '.714'},
+    'streak': {'type': 'win', 'value': '4'},
+    'points_for': '1954.92',
+    'points_against': 1773.7},
+   {'team_key': '380.l.765649.t.4',
+    'name': 'The Gurley Show',
+    'rank': 2,
+    'playoff_seed': '4',
+    'outcome_totals': {'wins': '7',
+     'losses': '7',
+     'ties': 0,
+     'percentage': '.500'},
+    'streak': {'type': 'loss', 'value': '1'},
+    'points_for': '1788.14',
+    'points_against': 1714.3000000000002},
+   {'team_key': '380.l.765649.t.7',
+    'name': 'Comeback Train',
+    'rank': 3,
+    'playoff_seed': '3',
+    'outcome_totals': {'wins': '7',
+     'losses': '7',
+     'ties': 0,
+     'percentage': '.500'},
+    'streak': {'type': 'win', 'value': '1'},
+    'points_for': '1864.42',
+    'points_against': 1849.2600000000002},
+   {'team_key': '380.l.765649.t.6',
+    'name': 'Shady',
+    'rank': 4,
+    'playoff_seed': '1',
+    'outcome_totals': {'wins': '12',
+     'losses': '2',
+     'ties': 0,
+     'percentage': '.857'},
+    'streak': {'type': 'win', 'value': '1'},
+    'points_for': '1998.98',
+    'points_against': 1667.86},
+   {'team_key': '380.l.765649.t.5',
+    'name': 'BetterGoEatSome Soup',
+    'rank': 5,
+    'playoff_seed': '6',
+    'outcome_totals': {'wins': '7',
+     'losses': '7',
+     'ties': 0,
+     'percentage': '.500'},
+    'streak': {'type': 'loss', 'value': '4'},
+    'points_for': '1700.02',
+    'points_against': 1671.48},
+   {'team_key': '380.l.765649.t.8',
+    'name': "Sy's Slam-Dunk Team",
+    'rank': 6,
+    'playoff_seed': '8',
+    'outcome_totals': {'wins': '6',
+     'losses': '8',
+     'ties': 0,
+     'percentage': '.429'},
+    'streak': {'type': 'loss', 'value': '1'},
+    'points_for': '1766.80',
+    'points_against': 1768.86},
+   {'team_key': '380.l.765649.t.1',
+    'name': '...brown do for you',
+    'rank': 7,
+    'playoff_seed': '5',
+    'outcome_totals': {'wins': '7',
+     'losses': '7',
+     'ties': 0,
+     'percentage': '.500'},
+    'streak': {'type': 'loss', 'value': '1'},
+    'points_for': '1756.94',
+    'points_against': 1803.38},
+   {'team_key': '380.l.765649.t.3',
+    'name': 'Yolo swag 420 dab',
+    'rank': 8,
+    'playoff_seed': '7',
+    'outcome_totals': {'wins': '6',
+     'losses': '8',
+     'ties': 0,
+     'percentage': '.429'},
+    'streak': {'type': 'win', 'value': '1'},
+    'points_for': '1798.90',
+    'points_against': 1883.2400000000002},
+   {'team_key': '380.l.765649.t.9',
+    'name': 'Elementary Watson!',
+    'rank': '9',
+    'outcome_totals': {'wins': '4',
+     'losses': '10',
+     'ties': 0,
+     'percentage': '.286'},
+    'streak': {'type': 'loss', 'value': '1'},
+    'points_for': '1647.94',
+    'points_against': 1972.94},
+   {'team_key': '380.l.765649.t.2',
+    'name': 'Goal #1 Draft Pick',
+    'rank': '10',
+    'outcome_totals': {'wins': '4',
+     'losses': '10',
+     'ties': 0,
+     'percentage': '.286'},
+    'streak': {'type': 'win', 'value': '1'},
+    'points_for': '1644.18',
+    'points_against': 1816.22}]
+
+    actual = yahoo.get_current_standings(m_lg)
+
+    expected = {'380.l.765649.t.10': {'wins': '10',
+  'losses': '4',
+  'ties': 0,
+  'percentage': '.714'},
+ '380.l.765649.t.4': {'wins': '7',
+  'losses': '7',
+  'ties': 0,
+  'percentage': '.500'},
+ '380.l.765649.t.7': {'wins': '7',
+  'losses': '7',
+  'ties': 0,
+  'percentage': '.500'},
+ '380.l.765649.t.6': {'wins': '12',
+  'losses': '2',
+  'ties': 0,
+  'percentage': '.857'},
+ '380.l.765649.t.5': {'wins': '7',
+  'losses': '7',
+  'ties': 0,
+  'percentage': '.500'},
+ '380.l.765649.t.8': {'wins': '6',
+  'losses': '8',
+  'ties': 0,
+  'percentage': '.429'},
+ '380.l.765649.t.1': {'wins': '7',
+  'losses': '7',
+  'ties': 0,
+  'percentage': '.500'},
+ '380.l.765649.t.3': {'wins': '6',
+  'losses': '8',
+  'ties': 0,
+  'percentage': '.429'},
+ '380.l.765649.t.9': {'wins': '4',
+  'losses': '10',
+  'ties': 0,
+  'percentage': '.286'},
+ '380.l.765649.t.2': {'wins': '4',
+  'losses': '10',
+  'ties': 0,
+  'percentage': '.286'}}
+
+    assert expected == actual
 
 
 

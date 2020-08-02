@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 
 """
-Each week you will have to track which teams finished in the top half 
-of the league in scoring, and you’ll need to maintain a set of alternate 
+Each week you will have to track which teams finished in the top half
+of the league in scoring, and you’ll need to maintain a set of alternate
 standings all season.
 """
 
-import statistics 
+import statistics
 
-import pandas as pd 
+import pandas as pd
 from yahoo_oauth import OAuth2
 import yahoo_fantasy_api as yfa
 
@@ -20,7 +20,7 @@ def get_current_points(lg):
     ----------
     lg : yahoo_fantasy_api.League
         An instance of the yahoo_fantasy_api League object
-        
+
     Returns
     ---------
     dict {str: str}
@@ -30,23 +30,24 @@ def get_current_points(lg):
 
     matchups_content = lg.matchups()
 
-    matchups = matchups_content['fantasy_content']['league'][1]['scoreboard']['0']['matchups']
+    matchups = matchups_content["fantasy_content"]["league"][1]["scoreboard"]["0"][
+        "matchups"
+    ]
 
     foo = {}
 
-    for matchup in range(matchups['count']):
+    for matchup in range(matchups["count"]):
 
-        teams = matchups[str(matchup)]['matchup']['0']['teams']
+        teams = matchups[str(matchup)]["matchup"]["0"]["teams"]
 
-        for team in range(teams['count']):
+        for team in range(teams["count"]):
 
-            team_key = teams[str(team)]['team'][0][0]['team_key']
-            team_points = teams[str(team)]['team'][1]['team_points']['total']
+            team_key = teams[str(team)]["team"][0][0]["team_key"]
+            team_points = teams[str(team)]["team"][1]["team_points"]["total"]
 
             foo[team_key] = team_points
 
     return foo
-
 
 
 def get_top_half_teams(points):
@@ -65,7 +66,7 @@ def get_top_half_teams(points):
 
     m = statistics.median([float(i) for i in list(points.values())])
 
-    return {key for key,value in points.items() if float(value) > m}
+    return {key for key, value in points.items() if float(value) > m}
 
 
 def get_current_standings(lg):
@@ -75,7 +76,7 @@ def get_current_standings(lg):
     ----------
     lg : yahoo_fantasy_api.League
         An instance of the yahoo_fantasy_api League object
-        
+
     Returns
     ---------
 
@@ -83,8 +84,7 @@ def get_current_standings(lg):
 
     standings_content = lg.standings()
 
-    return {bar['team_key']: bar['outcome_totals'] for bar in standings_content}
-
+    return {bar["team_key"]: bar["outcome_totals"] for bar in standings_content}
 
 
 def get_alternative_standings(standings, top_half_teams):
@@ -97,45 +97,53 @@ def get_alternative_standings(standings, top_half_teams):
 
     Returns
     list of tuple of str
-        foo 
+        foo
 
     """
 
-    df = pd.DataFrame({'team_key': list(standings.keys()),
-                       'wins': [int(val['wins']) for val in standings.values()],
-                       'losses': [int(val['losses']) for val in standings.values()],
-                       'ties': [int(val['ties']) for val in standings.values()],
-                       'percentage': [float(val['percentage']) for val in standings.values()],
-                       'doubleheader_wins': [int(val['wins']) + 1 if key in top_half_teams
-                                              else int(val['wins'])
-                                              for key, val in standings.items()],
-                        'doubleheader_losses': [int(val['losses']) + 1 if key  not in top_half_teams
-                                              else int(val['losses'])
-                                              for key, val in standings.items()]})
+    df = pd.DataFrame(
+        {
+            "team_key": list(standings.keys()),
+            "wins": [int(val["wins"]) for val in standings.values()],
+            "losses": [int(val["losses"]) for val in standings.values()],
+            "ties": [int(val["ties"]) for val in standings.values()],
+            "percentage": [float(val["percentage"]) for val in standings.values()],
+            "doubleheader_wins": [
+                int(val["wins"]) + 1
+                if key in top_half_teams
+                else int(val["wins"])
+                for key, val in standings.items()
+            ],
+            "doubleheader_losses": [
+                int(val["losses"]) + 1
+                if key not in top_half_teams
+                else int(val["losses"])
+                for key, val in standings.items()
+            ],
+        }
+    )
 
-    df['doubleheader_percentage'] = df['doubleheader_wins']/ (df['doubleheader_wins'] + df['doubleheader_losses'])
+    df["doubleheader_percentage"] = df["doubleheader_wins"] / (
+        df["doubleheader_wins"] + df["doubleheader_losses"]
+    )
 
-    # df order by points 
+    # df order by points
 
     return df
 
 
-
 def main():
 
-    sc = OAuth2(None, None, from_file='keys.json')
+    sc = OAuth2(None, None, from_file="keys.json")
 
-    gm = yfa.Game(sc, 'nfl')
+    gm = yfa.Game(sc, "nfl")
     gm.league_ids(2018)
-    lg = gm.to_league('380.l.765649')
+    lg = gm.to_league("380.l.765649")
 
     lg.current_week()
 
     get_current_points(lg)
 
 
-
 if __name__ == "__main__":
     main()
-
-

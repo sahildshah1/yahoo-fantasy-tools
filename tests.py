@@ -1,8 +1,12 @@
-from unittest.mock import Mock
+"""
+Tests for yahoo
+"""
+
+import unittest.mock as mock
 
 import pandas as pd
-import yahoo
 
+import yahoo
 import api_return_vals
 
 points = {
@@ -38,47 +42,16 @@ outcomes = {
 }
 
 
-def test_get_current_points():
-    """Ensure get_current_points returns correct answer
-    """
-    m_lg = Mock()
+@mock.patch("yahoo.get_current_standings")
+@mock.patch("yahoo.get_top_half_teams")
+def test_get_alternative_standings(m_top_half_teams, m_get_current_standings):
 
-    m_lg.matchups.return_value = api_return_vals.matchups
+    m_get_current_standings.return_value = outcomes
+    m_top_half_teams.return_value = top_half_teams
 
-    actual = yahoo.get_current_points(m_lg)
+    m_lg = mock.Mock()
 
-    expected = points
-
-    assert expected == actual
-
-
-def test_get_top_half_teams():
-
-    actual = yahoo.get_top_half_teams(points)
-
-    expected = top_half_teams
-
-    assert expected == actual
-
-
-def test_get_current_standings():
-    """Ensure get_current_standings returns correct answer
-    """
-
-    m_lg = Mock()
-
-    m_lg.standings.return_value = api_return_vals.standings
-
-    actual = yahoo.get_current_standings(m_lg)
-
-    expected = outcomes
-
-    assert expected == actual
-
-
-def test_get_alternative_standings():
-
-    actual = yahoo.get_alternative_standings(outcomes, top_half_teams)
+    actual = yahoo.get_alternative_standings(m_lg)
 
     expected = pd.DataFrame(
         {
@@ -127,3 +100,46 @@ def test_get_alternative_standings():
     )
 
     pd.testing.assert_frame_equal(expected, actual)
+
+
+def test_get_current_standings():
+    """Ensure get_current_standings returns correct answer
+    """
+
+    m_lg = mock.Mock()
+
+    m_lg.standings.return_value = api_return_vals.standings
+
+    actual = yahoo.get_current_standings(m_lg)
+
+    expected = outcomes
+
+    assert expected == actual
+
+
+@mock.patch("yahoo.get_current_points")
+def test_get_top_half_teams(m_get_current_points):
+
+    m_get_current_points.return_value = points
+
+    m_lg = mock.Mock()
+
+    actual = yahoo.get_top_half_teams(m_lg)
+
+    expected = top_half_teams
+
+    assert expected == actual
+
+
+def test_get_current_points():
+    """Ensure get_current_points returns correct answer
+    """
+    m_lg = mock.Mock()
+
+    m_lg.matchups.return_value = api_return_vals.matchups
+
+    actual = yahoo.get_current_points(m_lg)
+
+    expected = points
+
+    assert expected == actual

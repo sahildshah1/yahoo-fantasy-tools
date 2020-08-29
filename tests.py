@@ -50,6 +50,7 @@ def test_get_alternative_standings(m_top_half_teams, m_get_current_standings):
     m_top_half_teams.return_value = top_half_teams
 
     m_lg = mock.Mock()
+    m_lg.teams.return_value = api_return_vals.teams
 
     actual = yahoo.get_alternative_standings(m_lg)
 
@@ -67,6 +68,20 @@ def test_get_alternative_standings(m_top_half_teams, m_get_current_standings):
                 "380.l.765649.t.9",
                 "380.l.765649.t.2",
             ],
+            "team_name": [
+                "Easy Drake oven",
+                "The Gurley Show",
+                "Comeback Train",
+                "Shady",
+                "BetterGoEatSome Soup",
+                "Sy's Slam-Dunk Team",
+                "...brown do for you",
+                "Yolo swag 420 dab",
+                "Elementary Watson!",
+                "Goal #1 Draft Pick",
+            ],
+            "doubleheader_wins": [11, 7, 8, 13, 8, 6, 7, 6, 4, 4],
+            "doubleheader_losses": [4, 8, 7, 2, 7, 9, 8, 9, 11, 11],
             "wins": [10, 7, 7, 12, 7, 6, 7, 6, 4, 4],
             "losses": [4, 7, 7, 2, 7, 8, 7, 8, 10, 10],
             "ties": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -82,8 +97,6 @@ def test_get_alternative_standings(m_top_half_teams, m_get_current_standings):
                 0.286,
                 0.286,
             ],
-            "doubleheader_wins": [11, 7, 8, 13, 8, 6, 7, 6, 4, 4],
-            "doubleheader_losses": [4, 8, 7, 2, 7, 9, 8, 9, 11, 11],
             "doubleheader_percentage": [
                 0.7333333333333333,
                 0.4666666666666667,

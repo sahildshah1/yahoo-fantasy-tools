@@ -22,4 +22,5 @@ python doubleheader.py -league_id <League ID>
 ```
 
 League IDs can be found using the API: [`yahoo_fantasy_api.game.Game.league_ids`](https://yahoo-fantasy-api.readthedocs.io/en/latest/yahoo_fantasy_api.html#yahoo_fantasy_api.game.Game.league_ids).
+
 See an example of using `yahoo_fantasy_api.game.Game.league_ids` [here.](https://pypi.org/project/yahoo-fantasy-api/)

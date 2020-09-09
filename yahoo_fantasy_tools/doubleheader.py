@@ -5,11 +5,12 @@ Compute  "doubleheader" standings for the current week of the season
 import statistics
 
 import pandas as pd
+import click 
 from yahoo_oauth import OAuth2
 import yahoo_fantasy_api as yfa
 
 
-def get_alternative__standings(lg):
+def get_alternative_standings(lg):
     """ Compute "doubleheader" standings
 
     Parameters
@@ -61,7 +62,7 @@ def get_alternative__standings(lg):
 
 
 def get_current_standings(lg):
-    """ Get current standings 
+    """ Get current outcome totals 
 
     Parameters
     ----------
@@ -136,18 +137,18 @@ def get_current_points(lg):
     return points
 
 
-def main():
+@click.command()
+@click.option('-league_id', help='League ID')
+def main(league_id):
 
-    sc = OAuth2(None, None, from_file="keys.json")
+    sc = OAuth2(None, None, from_file="oauth2.json")
 
     gm = yfa.Game(sc, "nfl")
-    
-    #gm.league_ids(2018)
-    lg = gm.to_league("380.l.765649")
+    lg = gm.to_league(league_id)
 
     print(f"The current week is {lg.current_week()}")
 
-    print(get_alternative__standings(lg))
+    print(get_alternative_standings(lg))
 
 if __name__ == "__main__":
     main()

@@ -1,15 +1,15 @@
 """
-Tests for yahoo
+Tests for doubleheader
 """
 
 import unittest.mock as mock
 
 import pandas as pd
 
-import yahoo
-import api_return_vals
+import yahoo_fantasy_tools.doubleheader as doubleheader 
+from const import MATCHUPS, STANDINGS, TEAMS
 
-points = {
+POINTS = {
     "380.l.765649.t.1": "100.12",
     "380.l.765649.t.3": "98.30",
     "380.l.765649.t.4": "118.34",
@@ -20,15 +20,14 @@ points = {
     "380.l.765649.t.7": "141.02",
 }
 
-top_half_teams = {
+TOP_HALF_TEAMS = {
     "380.l.765649.t.10",
     "380.l.765649.t.5",
     "380.l.765649.t.6",
     "380.l.765649.t.7",
 }
 
-
-outcomes = {
+OUTCOMES = {
     "380.l.765649.t.10": {"wins": "10", "losses": "4", "ties": 0, "percentage": ".714"},
     "380.l.765649.t.4": {"wins": "7", "losses": "7", "ties": 0, "percentage": ".500"},
     "380.l.765649.t.7": {"wins": "7", "losses": "7", "ties": 0, "percentage": ".500"},
@@ -42,17 +41,17 @@ outcomes = {
 }
 
 
-@mock.patch("yahoo.get_current_standings")
-@mock.patch("yahoo.get_top_half_teams")
+@mock.patch("yahoo_fantasy_tools.doubleheader.get_current_standings")
+@mock.patch("yahoo_fantasy_tools.doubleheader.get_top_half_teams")
 def test_get_alternative_standings(m_top_half_teams, m_get_current_standings):
 
-    m_get_current_standings.return_value = outcomes
-    m_top_half_teams.return_value = top_half_teams
+    m_get_current_standings.return_value = OUTCOMES
+    m_top_half_teams.return_value = TOP_HALF_TEAMS
 
     m_lg = mock.Mock()
-    m_lg.teams.return_value = api_return_vals.teams
+    m_lg.teams.return_value = TEAMS
 
-    actual = yahoo.get_alternative_standings(m_lg)
+    actual = doubleheader.get_alternative_standings(m_lg)
 
     expected = pd.DataFrame(
         {
@@ -121,25 +120,25 @@ def test_get_current_standings():
 
     m_lg = mock.Mock()
 
-    m_lg.standings.return_value = api_return_vals.standings
+    m_lg.standings.return_value = STANDINGS
 
-    actual = yahoo.get_current_standings(m_lg)
+    actual = doubleheader.get_current_standings(m_lg)
 
-    expected = outcomes
+    expected = OUTCOMES
 
     assert expected == actual
 
 
-@mock.patch("yahoo.get_current_points")
+@mock.patch("yahoo_fantasy_tools.doubleheader.get_current_points")
 def test_get_top_half_teams(m_get_current_points):
 
-    m_get_current_points.return_value = points
+    m_get_current_points.return_value = POINTS
 
     m_lg = mock.Mock()
 
-    actual = yahoo.get_top_half_teams(m_lg)
+    actual = doubleheader.get_top_half_teams(m_lg)
 
-    expected = top_half_teams
+    expected = TOP_HALF_TEAMS
 
     assert expected == actual
 
@@ -149,10 +148,10 @@ def test_get_current_points():
     """
     m_lg = mock.Mock()
 
-    m_lg.matchups.return_value = api_return_vals.matchups
+    m_lg.matchups.return_value = MATCHUPS
 
-    actual = yahoo.get_current_points(m_lg)
+    actual = doubleheader.get_current_points(m_lg)
 
-    expected = points
+    expected = POINTS
 
     assert expected == actual

@@ -904,233 +904,352 @@ STANDINGS = [
     },
 ]
 
-TEAMS = {'380.l.765649.t.10': {'team_key': '380.l.765649.t.10',
-  'team_id': '10',
-  'name': 'Easy Drake oven',
-  'url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/10',
-  'team_logos': [{'team_logo': {'size': 'large',
-     'url': 'https://s.yimg.com/cv/apiv2/default/nfl/nfl_4.png'}}],
-  'waiver_priority': 9,
-  'faab_balance': '22',
-  'number_of_moves': '37',
-  'number_of_trades': 0,
-  'roster_adds': {'coverage_type': 'week',
-   'coverage_value': '17',
-   'value': '0'},
-  'clinched_playoffs': 1,
-  'league_scoring_type': 'head',
-  'draft_position': 5,
-  'has_draft_grade': 1,
-  'draft_grade': 'B',
-  'draft_recap_url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/10/draftrecap',
-  'managers': [{'manager': {'manager_id': '10',
-     'nickname': 'Pinang',
-     'guid': '4MCLU6BYC56YBMK2MCVWWPCBOM',
-     'image_url': 'https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg'}}]},
- '380.l.765649.t.4': {'team_key': '380.l.765649.t.4',
-  'team_id': '4',
-  'name': 'The Gurley Show',
-  'url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/4',
-  'team_logos': [{'team_logo': {'size': 'large',
-     'url': 'https://s.yimg.com/cv/apiv2/default/nfl/nfl_11.png'}}],
-  'waiver_priority': 7,
-  'faab_balance': '0',
-  'number_of_moves': '40',
-  'number_of_trades': '1',
-  'roster_adds': {'coverage_type': 'week',
-   'coverage_value': '17',
-   'value': '0'},
-  'clinched_playoffs': 1,
-  'league_scoring_type': 'head',
-  'draft_position': 2,
-  'has_draft_grade': 1,
-  'draft_grade': 'C',
-  'draft_recap_url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/4/draftrecap',
-  'managers': [{'manager': {'manager_id': '4',
-     'nickname': 'Rahul',
-     'guid': 'YJYCWKNRY2GD3AZS2HEXGDQ5PE',
-     'image_url': 'https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg'}}]},
- '380.l.765649.t.7': {'team_key': '380.l.765649.t.7',
-  'team_id': '7',
-  'name': 'Comeback Train',
-  'url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/7',
-  'team_logos': [{'team_logo': {'size': 'large',
-     'url': 'https://s.yimg.com/cv/apiv2/default/nfl/nfl_6.png'}}],
-  'waiver_priority': 8,
-  'faab_balance': '0',
-  'number_of_moves': '40',
-  'number_of_trades': 0,
-  'roster_adds': {'coverage_type': 'week',
-   'coverage_value': '17',
-   'value': '0'},
-  'clinched_playoffs': 1,
-  'league_scoring_type': 'head',
-  'draft_position': 10,
-  'has_draft_grade': 1,
-  'draft_grade': 'C',
-  'draft_recap_url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/7/draftrecap',
-  'managers': [{'manager': {'manager_id': '7',
-     'nickname': 'Alex',
-     'guid': '5EHRIF7WIT5A62VA6XKU3HDELY',
-     'image_url': 'https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg'}}]},
- '380.l.765649.t.6': {'team_key': '380.l.765649.t.6',
-  'team_id': '6',
-  'name': 'Shady',
-  'url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/6',
-  'team_logos': [{'team_logo': {'size': 'large',
-     'url': 'https://s.yimg.com/cv/apiv2/default/nfl/nfl_4.png'}}],
-  'waiver_priority': 10,
-  'faab_balance': '100',
-  'number_of_moves': '3',
-  'number_of_trades': 0,
-  'roster_adds': {'coverage_type': 'week',
-   'coverage_value': '17',
-   'value': '0'},
-  'clinched_playoffs': 1,
-  'league_scoring_type': 'head',
-  'draft_position': 6,
-  'has_draft_grade': 1,
-  'draft_grade': 'B',
-  'draft_recap_url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/6/draftrecap',
-  'managers': [{'manager': {'manager_id': '6',
-     'nickname': 'AirM',
-     'guid': 'WEFJYDUXRRSUQKQOSD2BI52XKY',
-     'image_url': 'https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg'}}]},
- '380.l.765649.t.5': {'team_key': '380.l.765649.t.5',
-  'team_id': '5',
-  'name': 'BetterGoEatSome Soup',
-  'is_owned_by_current_login': 1,
-  'url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/5',
-  'team_logos': [{'team_logo': {'size': 'large',
-     'url': 'https://s.yimg.com/cv/apiv2/default/nfl/nfl_6.png'}}],
-  'waiver_priority': 5,
-  'faab_balance': '50',
-  'number_of_moves': '15',
-  'number_of_trades': 0,
-  'roster_adds': {'coverage_type': 'week',
-   'coverage_value': '17',
-   'value': '0'},
-  'league_scoring_type': 'head',
-  'draft_position': 1,
-  'has_draft_grade': 1,
-  'draft_grade': 'A-',
-  'draft_recap_url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/5/draftrecap',
-  'managers': [{'manager': {'manager_id': '5',
-     'nickname': 'Sahil',
-     'guid': 'WUAYDHNZ23GD3ITDXABYEMDRIA',
-     'is_current_login': '1',
-     'image_url': 'https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg'}}]},
- '380.l.765649.t.8': {'team_key': '380.l.765649.t.8',
-  'team_id': '8',
-  'name': "Sy's Slam-Dunk Team",
-  'url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/8',
-  'team_logos': [{'team_logo': {'size': 'large',
-     'url': 'https://s.yimg.com/cv/apiv2/default/nfl/nfl_8.png'}}],
-  'waiver_priority': 3,
-  'faab_balance': '88',
-  'number_of_moves': '13',
-  'number_of_trades': 0,
-  'roster_adds': {'coverage_type': 'week',
-   'coverage_value': '17',
-   'value': '0'},
-  'league_scoring_type': 'head',
-  'draft_position': 9,
-  'has_draft_grade': 1,
-  'draft_grade': 'B+',
-  'draft_recap_url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/8/draftrecap',
-  'managers': [{'manager': {'manager_id': '8',
-     'nickname': 'Sy',
-     'guid': 'S5DS4A3ZVERR5QZ7VBCHZVTCAU',
-     'image_url': 'https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg'}}]},
- '380.l.765649.t.1': {'team_key': '380.l.765649.t.1',
-  'team_id': '1',
-  'name': '...brown do for you',
-  'url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/1',
-  'team_logos': [{'team_logo': {'size': 'large',
-     'url': 'https://s.yimg.com/cv/apiv2/default/nfl/nfl_8.png'}}],
-  'waiver_priority': 6,
-  'faab_balance': '0',
-  'number_of_moves': '38',
-  'number_of_trades': '2',
-  'roster_adds': {'coverage_type': 'week',
-   'coverage_value': '17',
-   'value': '0'},
-  'league_scoring_type': 'head',
-  'draft_position': 4,
-  'has_draft_grade': 1,
-  'draft_grade': 'C',
-  'draft_recap_url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/1/draftrecap',
-  'managers': [{'manager': {'manager_id': '1',
-     'nickname': 'Ravi',
-     'guid': 'O5MM6DOUQSXU24WYVTYKRTVKJQ',
-     'is_commissioner': '1',
-     'image_url': 'https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg'}}]},
- '380.l.765649.t.3': {'team_key': '380.l.765649.t.3',
-  'team_id': '3',
-  'name': 'Yolo swag 420 dab',
-  'url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/3',
-  'team_logos': [{'team_logo': {'size': 'large',
-     'url': 'https://s.yimg.com/cv/apiv2/default/nfl/nfl_5.png'}}],
-  'waiver_priority': 4,
-  'faab_balance': '100',
-  'number_of_moves': '10',
-  'number_of_trades': 0,
-  'roster_adds': {'coverage_type': 'week',
-   'coverage_value': '17',
-   'value': '0'},
-  'league_scoring_type': 'head',
-  'draft_position': 8,
-  'has_draft_grade': 1,
-  'draft_grade': 'B-',
-  'draft_recap_url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/3/draftrecap',
-  'managers': [{'manager': {'manager_id': '3',
-     'nickname': 'Greg P',
-     'guid': '6DJJL5QQBWTBUDKVG6POXF2X2A',
-     'image_url': 'https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg'}}]},
- '380.l.765649.t.9': {'team_key': '380.l.765649.t.9',
-  'team_id': '9',
-  'name': 'Elementary Watson!',
-  'url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/9',
-  'team_logos': [{'team_logo': {'size': 'large',
-     'url': 'https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/43666959585_51a628.jpg'}}],
-  'waiver_priority': 2,
-  'faab_balance': '21',
-  'number_of_moves': '22',
-  'number_of_trades': 0,
-  'roster_adds': {'coverage_type': 'week',
-   'coverage_value': '17',
-   'value': '0'},
-  'league_scoring_type': 'head',
-  'draft_position': 3,
-  'has_draft_grade': 1,
-  'draft_grade': 'C',
-  'draft_recap_url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/9/draftrecap',
-  'managers': [{'manager': {'manager_id': '9',
-     'nickname': 'Prasanna',
-     'guid': '7M37EUXMJ3EBPBVATH4FMYTHJA',
-     'image_url': 'https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg'}}]},
- '380.l.765649.t.2': {'team_key': '380.l.765649.t.2',
-  'team_id': '2',
-  'name': 'Goal #1 Draft Pick',
-  'url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/2',
-  'team_logos': [{'team_logo': {'size': 'large',
-     'url': 'https://s.yimg.com/cv/apiv2/default/nfl/nfl_10.png'}}],
-  'waiver_priority': 1,
-  'faab_balance': '40',
-  'number_of_moves': '23',
-  'number_of_trades': '1',
-  'roster_adds': {'coverage_type': 'week',
-   'coverage_value': '17',
-   'value': '0'},
-  'league_scoring_type': 'head',
-  'draft_position': 7,
-  'has_draft_grade': 1,
-  'draft_grade': 'B-',
-  'draft_recap_url': 'https://football.fantasysports.yahoo.com/2018/f1/765649/2/draftrecap',
-  'managers': [{'manager': {'manager_id': '2',
-     'nickname': 'Greg S',
-     'guid': '37T2YKG6MGNR52UXAUC7CEFFPE',
-     'image_url': 'https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg'}}]}}
-
-
-
+TEAMS = {
+    "380.l.765649.t.10": {
+        "team_key": "380.l.765649.t.10",
+        "team_id": "10",
+        "name": "Easy Drake oven",
+        "url": "https://football.fantasysports.yahoo.com/2018/f1/765649/10",
+        "team_logos": [
+            {
+                "team_logo": {
+                    "size": "large",
+                    "url": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_4.png",
+                }
+            }
+        ],
+        "waiver_priority": 9,
+        "faab_balance": "22",
+        "number_of_moves": "37",
+        "number_of_trades": 0,
+        "roster_adds": {"coverage_type": "week", "coverage_value": "17", "value": "0"},
+        "clinched_playoffs": 1,
+        "league_scoring_type": "head",
+        "draft_position": 5,
+        "has_draft_grade": 1,
+        "draft_grade": "B",
+        "draft_recap_url": "https://football.fantasysports.yahoo.com/2018/f1/765649/10/draftrecap",
+        "managers": [
+            {
+                "manager": {
+                    "manager_id": "10",
+                    "nickname": "Pinang",
+                    "guid": "4MCLU6BYC56YBMK2MCVWWPCBOM",
+                    "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                }
+            }
+        ],
+    },
+    "380.l.765649.t.4": {
+        "team_key": "380.l.765649.t.4",
+        "team_id": "4",
+        "name": "The Gurley Show",
+        "url": "https://football.fantasysports.yahoo.com/2018/f1/765649/4",
+        "team_logos": [
+            {
+                "team_logo": {
+                    "size": "large",
+                    "url": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_11.png",
+                }
+            }
+        ],
+        "waiver_priority": 7,
+        "faab_balance": "0",
+        "number_of_moves": "40",
+        "number_of_trades": "1",
+        "roster_adds": {"coverage_type": "week", "coverage_value": "17", "value": "0"},
+        "clinched_playoffs": 1,
+        "league_scoring_type": "head",
+        "draft_position": 2,
+        "has_draft_grade": 1,
+        "draft_grade": "C",
+        "draft_recap_url": "https://football.fantasysports.yahoo.com/2018/f1/765649/4/draftrecap",
+        "managers": [
+            {
+                "manager": {
+                    "manager_id": "4",
+                    "nickname": "Rahul",
+                    "guid": "YJYCWKNRY2GD3AZS2HEXGDQ5PE",
+                    "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                }
+            }
+        ],
+    },
+    "380.l.765649.t.7": {
+        "team_key": "380.l.765649.t.7",
+        "team_id": "7",
+        "name": "Comeback Train",
+        "url": "https://football.fantasysports.yahoo.com/2018/f1/765649/7",
+        "team_logos": [
+            {
+                "team_logo": {
+                    "size": "large",
+                    "url": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_6.png",
+                }
+            }
+        ],
+        "waiver_priority": 8,
+        "faab_balance": "0",
+        "number_of_moves": "40",
+        "number_of_trades": 0,
+        "roster_adds": {"coverage_type": "week", "coverage_value": "17", "value": "0"},
+        "clinched_playoffs": 1,
+        "league_scoring_type": "head",
+        "draft_position": 10,
+        "has_draft_grade": 1,
+        "draft_grade": "C",
+        "draft_recap_url": "https://football.fantasysports.yahoo.com/2018/f1/765649/7/draftrecap",
+        "managers": [
+            {
+                "manager": {
+                    "manager_id": "7",
+                    "nickname": "Alex",
+                    "guid": "5EHRIF7WIT5A62VA6XKU3HDELY",
+                    "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                }
+            }
+        ],
+    },
+    "380.l.765649.t.6": {
+        "team_key": "380.l.765649.t.6",
+        "team_id": "6",
+        "name": "Shady",
+        "url": "https://football.fantasysports.yahoo.com/2018/f1/765649/6",
+        "team_logos": [
+            {
+                "team_logo": {
+                    "size": "large",
+                    "url": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_4.png",
+                }
+            }
+        ],
+        "waiver_priority": 10,
+        "faab_balance": "100",
+        "number_of_moves": "3",
+        "number_of_trades": 0,
+        "roster_adds": {"coverage_type": "week", "coverage_value": "17", "value": "0"},
+        "clinched_playoffs": 1,
+        "league_scoring_type": "head",
+        "draft_position": 6,
+        "has_draft_grade": 1,
+        "draft_grade": "B",
+        "draft_recap_url": "https://football.fantasysports.yahoo.com/2018/f1/765649/6/draftrecap",
+        "managers": [
+            {
+                "manager": {
+                    "manager_id": "6",
+                    "nickname": "AirM",
+                    "guid": "WEFJYDUXRRSUQKQOSD2BI52XKY",
+                    "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                }
+            }
+        ],
+    },
+    "380.l.765649.t.5": {
+        "team_key": "380.l.765649.t.5",
+        "team_id": "5",
+        "name": "BetterGoEatSome Soup",
+        "is_owned_by_current_login": 1,
+        "url": "https://football.fantasysports.yahoo.com/2018/f1/765649/5",
+        "team_logos": [
+            {
+                "team_logo": {
+                    "size": "large",
+                    "url": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_6.png",
+                }
+            }
+        ],
+        "waiver_priority": 5,
+        "faab_balance": "50",
+        "number_of_moves": "15",
+        "number_of_trades": 0,
+        "roster_adds": {"coverage_type": "week", "coverage_value": "17", "value": "0"},
+        "league_scoring_type": "head",
+        "draft_position": 1,
+        "has_draft_grade": 1,
+        "draft_grade": "A-",
+        "draft_recap_url": "https://football.fantasysports.yahoo.com/2018/f1/765649/5/draftrecap",
+        "managers": [
+            {
+                "manager": {
+                    "manager_id": "5",
+                    "nickname": "Sahil",
+                    "guid": "WUAYDHNZ23GD3ITDXABYEMDRIA",
+                    "is_current_login": "1",
+                    "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                }
+            }
+        ],
+    },
+    "380.l.765649.t.8": {
+        "team_key": "380.l.765649.t.8",
+        "team_id": "8",
+        "name": "Sy's Slam-Dunk Team",
+        "url": "https://football.fantasysports.yahoo.com/2018/f1/765649/8",
+        "team_logos": [
+            {
+                "team_logo": {
+                    "size": "large",
+                    "url": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_8.png",
+                }
+            }
+        ],
+        "waiver_priority": 3,
+        "faab_balance": "88",
+        "number_of_moves": "13",
+        "number_of_trades": 0,
+        "roster_adds": {"coverage_type": "week", "coverage_value": "17", "value": "0"},
+        "league_scoring_type": "head",
+        "draft_position": 9,
+        "has_draft_grade": 1,
+        "draft_grade": "B+",
+        "draft_recap_url": "https://football.fantasysports.yahoo.com/2018/f1/765649/8/draftrecap",
+        "managers": [
+            {
+                "manager": {
+                    "manager_id": "8",
+                    "nickname": "Sy",
+                    "guid": "S5DS4A3ZVERR5QZ7VBCHZVTCAU",
+                    "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                }
+            }
+        ],
+    },
+    "380.l.765649.t.1": {
+        "team_key": "380.l.765649.t.1",
+        "team_id": "1",
+        "name": "...brown do for you",
+        "url": "https://football.fantasysports.yahoo.com/2018/f1/765649/1",
+        "team_logos": [
+            {
+                "team_logo": {
+                    "size": "large",
+                    "url": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_8.png",
+                }
+            }
+        ],
+        "waiver_priority": 6,
+        "faab_balance": "0",
+        "number_of_moves": "38",
+        "number_of_trades": "2",
+        "roster_adds": {"coverage_type": "week", "coverage_value": "17", "value": "0"},
+        "league_scoring_type": "head",
+        "draft_position": 4,
+        "has_draft_grade": 1,
+        "draft_grade": "C",
+        "draft_recap_url": "https://football.fantasysports.yahoo.com/2018/f1/765649/1/draftrecap",
+        "managers": [
+            {
+                "manager": {
+                    "manager_id": "1",
+                    "nickname": "Ravi",
+                    "guid": "O5MM6DOUQSXU24WYVTYKRTVKJQ",
+                    "is_commissioner": "1",
+                    "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                }
+            }
+        ],
+    },
+    "380.l.765649.t.3": {
+        "team_key": "380.l.765649.t.3",
+        "team_id": "3",
+        "name": "Yolo swag 420 dab",
+        "url": "https://football.fantasysports.yahoo.com/2018/f1/765649/3",
+        "team_logos": [
+            {
+                "team_logo": {
+                    "size": "large",
+                    "url": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_5.png",
+                }
+            }
+        ],
+        "waiver_priority": 4,
+        "faab_balance": "100",
+        "number_of_moves": "10",
+        "number_of_trades": 0,
+        "roster_adds": {"coverage_type": "week", "coverage_value": "17", "value": "0"},
+        "league_scoring_type": "head",
+        "draft_position": 8,
+        "has_draft_grade": 1,
+        "draft_grade": "B-",
+        "draft_recap_url": "https://football.fantasysports.yahoo.com/2018/f1/765649/3/draftrecap",
+        "managers": [
+            {
+                "manager": {
+                    "manager_id": "3",
+                    "nickname": "Greg P",
+                    "guid": "6DJJL5QQBWTBUDKVG6POXF2X2A",
+                    "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                }
+            }
+        ],
+    },
+    "380.l.765649.t.9": {
+        "team_key": "380.l.765649.t.9",
+        "team_id": "9",
+        "name": "Elementary Watson!",
+        "url": "https://football.fantasysports.yahoo.com/2018/f1/765649/9",
+        "team_logos": [
+            {
+                "team_logo": {
+                    "size": "large",
+                    "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/43666959585_51a628.jpg",
+                }
+            }
+        ],
+        "waiver_priority": 2,
+        "faab_balance": "21",
+        "number_of_moves": "22",
+        "number_of_trades": 0,
+        "roster_adds": {"coverage_type": "week", "coverage_value": "17", "value": "0"},
+        "league_scoring_type": "head",
+        "draft_position": 3,
+        "has_draft_grade": 1,
+        "draft_grade": "C",
+        "draft_recap_url": "https://football.fantasysports.yahoo.com/2018/f1/765649/9/draftrecap",
+        "managers": [
+            {
+                "manager": {
+                    "manager_id": "9",
+                    "nickname": "Prasanna",
+                    "guid": "7M37EUXMJ3EBPBVATH4FMYTHJA",
+                    "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                }
+            }
+        ],
+    },
+    "380.l.765649.t.2": {
+        "team_key": "380.l.765649.t.2",
+        "team_id": "2",
+        "name": "Goal #1 Draft Pick",
+        "url": "https://football.fantasysports.yahoo.com/2018/f1/765649/2",
+        "team_logos": [
+            {
+                "team_logo": {
+                    "size": "large",
+                    "url": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_10.png",
+                }
+            }
+        ],
+        "waiver_priority": 1,
+        "faab_balance": "40",
+        "number_of_moves": "23",
+        "number_of_trades": "1",
+        "roster_adds": {"coverage_type": "week", "coverage_value": "17", "value": "0"},
+        "league_scoring_type": "head",
+        "draft_position": 7,
+        "has_draft_grade": 1,
+        "draft_grade": "B-",
+        "draft_recap_url": "https://football.fantasysports.yahoo.com/2018/f1/765649/2/draftrecap",
+        "managers": [
+            {
+                "manager": {
+                    "manager_id": "2",
+                    "nickname": "Greg S",
+                    "guid": "37T2YKG6MGNR52UXAUC7CEFFPE",
+                    "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                }
+            }
+        ],
+    },
+}

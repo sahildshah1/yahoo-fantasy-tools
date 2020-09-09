@@ -5,7 +5,7 @@ Compute  "doubleheader" standings for the current week of the season
 import statistics
 
 import pandas as pd
-import click 
+import click
 from yahoo_oauth import OAuth2
 import yahoo_fantasy_api as yfa
 
@@ -26,7 +26,7 @@ def get_alternative_standings(lg):
 
     standings = get_current_standings(lg)
 
-    # Add win if in top half of league and loss if in bottom half 
+    # Add win if in top half of league and loss if in bottom half
     top_half_teams = get_top_half_teams(lg)
 
     tms = lg.teams()
@@ -34,11 +34,9 @@ def get_alternative_standings(lg):
     df = pd.DataFrame(
         {
             "team_key": list(standings.keys()),
-            "team_name": [tms[key]['name'] for key in standings.keys()],
+            "team_name": [tms[key]["name"] for key in standings.keys()],
             "doubleheader_wins": [
-                int(val["wins"]) + 1 
-                if key in top_half_teams 
-                else int(val["wins"])
+                int(val["wins"]) + 1 if key in top_half_teams else int(val["wins"])
                 for key, val in standings.items()
             ],
             "doubleheader_losses": [
@@ -50,7 +48,7 @@ def get_alternative_standings(lg):
             "wins": [int(val["wins"]) for val in standings.values()],
             "losses": [int(val["losses"]) for val in standings.values()],
             "ties": [int(val["ties"]) for val in standings.values()],
-            "percentage": [float(val["percentage"]) for val in standings.values()]
+            "percentage": [float(val["percentage"]) for val in standings.values()],
         }
     )
 
@@ -96,7 +94,9 @@ def get_top_half_teams(lg):
 
     points = get_current_points(lg)
 
-    median_points = statistics.median([float(points) for points in list(points.values())])
+    median_points = statistics.median(
+        [float(points) for points in list(points.values())]
+    )
 
     return {team for team, points in points.items() if float(points) > median_points}
 
@@ -138,7 +138,7 @@ def get_current_points(lg):
 
 
 @click.command()
-@click.option('-league_id', help='League ID')
+@click.option("-league_id", help="League ID")
 def main(league_id):
 
     sc = OAuth2(None, None, from_file="oauth2.json")
@@ -149,6 +149,7 @@ def main(league_id):
     print(f"The current week is {lg.current_week()}")
 
     print(get_alternative_standings(lg))
+
 
 if __name__ == "__main__":
     main()

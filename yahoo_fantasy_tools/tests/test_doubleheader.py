@@ -6,7 +6,7 @@ import unittest.mock as mock
 
 import pandas as pd
 
-import yahoo_fantasy_tools.doubleheader as doubleheader 
+import yahoo_fantasy_tools.doubleheader as doubleheader
 from const import MATCHUPS, STANDINGS, TEAMS
 
 POINTS = {

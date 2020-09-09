@@ -1,8 +1,11 @@
+appdirs==1.4.4
 appnope==0.1.0
 attrs==19.3.0
 backcall==0.2.0
+black==19.10b0
 certifi==2020.4.5.1
 chardet==3.0.4
+click==7.1.2
 decorator==4.4.2
 docopt==0.6.2
 idna==2.9
@@ -16,6 +19,7 @@ objectpath==0.6.1
 packaging==20.4
 pandas==1.0.5
 parso==0.7.0
+pathspec==0.8.0
 pexpect==4.8.0
 pickleshare==0.7.5
 pluggy==0.13.1
@@ -30,11 +34,15 @@ python-dateutil==2.8.1
 pytz==2020.1
 PyYAML==5.3.1
 rauth==0.7.3
+regex==2020.7.14
 requests==2.23.0
 six==1.15.0
+toml==0.10.1
 traitlets==4.3.3
+typed-ast==1.4.1
 urllib3==1.25.9
 wcwidth==0.2.5
 yahoo-fantasy-api==2.0.1
+-e git+git@github.com:sahildshah1/yahoo-fantasy-tools.git@625262f8cf61463898621b0abf3457b6eb43f51e#egg=yahoo_fantasy_tools
 yahoo-oauth==1.0
 zipp==3.1.0

@@ -27,6 +27,22 @@ TOP_HALF_TEAMS = {
     "380.l.765649.t.7",
 }
 
+
+DOUBLEHEADER_BOUNUS = {
+
+    "380.l.765649.t.1": 0,
+    "380.l.765649.t.3": 0,
+    "380.l.765649.t.4": 0,
+    "380.l.765649.t.10": 1,
+    "380.l.765649.t.5": 1,
+    "380.l.765649.t.8": 0,
+    "380.l.765649.t.6": 1,
+    "380.l.765649.t.7": 1,
+
+}
+
+
+
 OUTCOMES = {
     "380.l.765649.t.10": {"wins": "10", "losses": "4", "ties": 0, "percentage": ".714"},
     "380.l.765649.t.4": {"wins": "7", "losses": "7", "ties": 0, "percentage": ".500"},
@@ -127,6 +143,24 @@ def test_get_current_standings():
     expected = OUTCOMES
 
     assert expected == actual
+
+
+def test_get_doubleheader_bonus():
+    """Ensure get_doubleheader_bonus returns correct answer
+    """
+
+    m_lg = mock.Mock()
+
+
+
+    actual = doubleheader.get_doubleheader_bonus(m_lg)
+
+    expected = 
+
+    assert expected = actual 
+
+
+
 
 
 @mock.patch("yahoo_fantasy_tools.doubleheader.get_current_points")

@@ -3,6 +3,7 @@ Compute  "doubleheader" standings for the current week of the season
 """
 
 import statistics
+import shelve
 
 import pandas as pd
 import click
@@ -26,10 +27,12 @@ def get_alternative_standings(lg):
 
     standings = get_current_standings(lg)
 
-    # Add win if in top half of league and loss if in bottom half
-    top_half_teams = get_top_half_teams(lg)
+    doubleheader_bonus = get_doubleheader_bonus(lg)
 
     tms = lg.teams()
+
+
+    # Add win if in top half of league and loss if in bottom half
 
     df = pd.DataFrame(
         {
@@ -76,6 +79,37 @@ def get_current_standings(lg):
     standings = lg.standings()
 
     return {team["team_key"]: team["outcome_totals"] for team in standings}
+
+
+def get_doubleheader_bonus(lg):
+    """ Get doubleheader bonus 
+
+    Parameters
+    ----------
+    lg : yahoo_fantasy_api.League
+        An instance of the yahoo_fantasy_api League class
+
+    Returns
+    -------
+    dict 
+
+    """
+
+
+    with open('data.pickle', 'rb') as f:
+        doubleheader_bonus = pickle.load(f)
+
+
+    top_half_teams = get_top_half_teams(lg)
+
+    doubleheader_bonus = {key: val  + 1 if key in top_half_teams else val 
+                         for key, val in doubleheader_bonus.items()}
+
+    with open('data.pickle', 'wb') as f:
+        pickle.dump(doubleheader_bonus, f,  protocol=4)
+
+
+    return doubleheader_bonus
 
 
 def get_top_half_teams(lg):
@@ -146,7 +180,25 @@ def main(league_id):
     gm = yfa.Game(sc, "nfl")
     lg = gm.to_league(league_id)
 
-    print(f"The current week is {lg.current_week()}")
+    print(f"It's Week {lg.current_week()}!")
+
+    # yahoo_fantasy_api.League.matchups only returns current week's data
+    with shelve.open('filename') as db:
+        db[str(lg.current_week())] = get_current_points(lg)
+
+
+
+    #Loop over points in db, compute top half teams each week update doubleheader win and loss in pandas 
+
+
+    with shelve.open('filename') as db:
+       for foo in db 
+
+            top_half_teams
+
+            double_header_bonus= +1 if in top half teams 
+
+
 
     print(get_alternative_standings(lg))
 

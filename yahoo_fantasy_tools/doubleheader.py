@@ -27,7 +27,8 @@ def get_alternative_standings(lg):
 
     standings = get_current_standings(lg)
 
-    doubleheader_bonus = get_doubleheader_bonus(lg)
+    # Add win if in top half of league and loss if in bottom half
+    top_half_teams = get_top_half_teams(lg)
 
     tms = lg.teams()
 
@@ -79,37 +80,6 @@ def get_current_standings(lg):
     standings = lg.standings()
 
     return {team["team_key"]: team["outcome_totals"] for team in standings}
-
-
-def get_doubleheader_bonus(lg):
-    """ Get doubleheader bonus 
-
-    Parameters
-    ----------
-    lg : yahoo_fantasy_api.League
-        An instance of the yahoo_fantasy_api League class
-
-    Returns
-    -------
-    dict 
-
-    """
-
-
-    with open('data.pickle', 'rb') as f:
-        doubleheader_bonus = pickle.load(f)
-
-
-    top_half_teams = get_top_half_teams(lg)
-
-    doubleheader_bonus = {key: val  + 1 if key in top_half_teams else val 
-                         for key, val in doubleheader_bonus.items()}
-
-    with open('data.pickle', 'wb') as f:
-        pickle.dump(doubleheader_bonus, f,  protocol=4)
-
-
-    return doubleheader_bonus
 
 
 def get_top_half_teams(lg):
@@ -182,21 +152,21 @@ def main(league_id):
 
     print(f"It's Week {lg.current_week()}!")
 
-    # yahoo_fantasy_api.League.matchups only returns current week's data
-    with shelve.open('filename') as db:
-        db[str(lg.current_week())] = get_current_points(lg)
+    # # yahoo_fantasy_api.League.matchups only returns current week's data
+    # with shelve.open('filename') as db:
+    #     db[str(lg.current_week())] = get_current_points(lg)
 
 
 
-    #Loop over points in db, compute top half teams each week update doubleheader win and loss in pandas 
+    # #Loop over points in db, compute top half teams each week update doubleheader win and loss in pandas 
 
 
-    with shelve.open('filename') as db:
-       for foo in db 
+    # with shelve.open('filename') as db:
+    #    for foo in db 
 
-            top_half_teams
+    #         top_half_teams
 
-            double_header_bonus= +1 if in top half teams 
+    #         double_header_bonus= +1 if in top half teams 
 
 
 

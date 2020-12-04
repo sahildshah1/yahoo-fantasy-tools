@@ -42,7 +42,7 @@ traitlets==4.3.3
 typed-ast==1.4.1
 urllib3==1.25.9
 wcwidth==0.2.5
-yahoo-fantasy-api==2.0.1
+yahoo-fantasy-api==2.3.0
 -e git+git@github.com:sahildshah1/yahoo-fantasy-tools.git@625262f8cf61463898621b0abf3457b6eb43f51e#egg=yahoo_fantasy_tools
 yahoo-oauth==1.0
 zipp==3.1.0

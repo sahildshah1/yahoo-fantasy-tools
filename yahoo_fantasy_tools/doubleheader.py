@@ -30,7 +30,7 @@ def get_alternative_standings(lg):
     standings = get_current_standings(lg)
     bonus_wins = get_bonus_wins()
 
-    # Add team names to data frame 
+    # Add team names to data frame
     teams = lg.teams()
 
     df = pd.DataFrame(
@@ -38,16 +38,15 @@ def get_alternative_standings(lg):
             "team_key": list(standings.keys()),
             "team_name": [teams[key]["name"] for key in standings.keys()],
             "wins": [int(val["wins"]) for val in standings.values()],
-            "bonus_wins": [bonus_wins[key] for key in standings.keys()]
+            "bonus_wins": [bonus_wins[key] for key in standings.keys()],
         }
     )
 
-    df["total_wins"] = (df["wins"] + df["bonus_wins"])
+    df["total_wins"] = df["wins"] + df["bonus_wins"]
     df["ties"] = [int(val["ties"]) for val in standings.values()]
 
-    df = df.sort_values(by=['total_wins'], ascending=False, ignore_index = True)
+    df = df.sort_values(by=["total_wins"], ascending=False, ignore_index=True)
 
-    
     return df
 
 
@@ -80,10 +79,10 @@ def get_bonus_wins():
 
     """
 
-    with shelve.open('fantasy_points') as db:
+    with shelve.open("fantasy_points") as db:
         top_half_teams = [get_top_half_teams(db[key]) for key in db]
 
-    # Flatten list of sets 
+    # Flatten list of sets
     top_half_teams = list(itertools.chain(*top_half_teams))
 
     return Counter(top_half_teams)
@@ -159,12 +158,12 @@ def main(league_id, shelf):
     print(f"It's Week {lg.current_week()}!")
 
     # yahoo_fantasy_api.League.matchups only returns current week's data
-    if shelf: 
-        with shelve.open('fantasy_points') as db:
+    if shelf:
+        with shelve.open("fantasy_points") as db:
             db[str(lg.current_week())] = get_current_points(lg)
 
-
     print(get_alternative_standings(lg))
+
 
 if __name__ == "__main__":
     main()

@@ -48,40 +48,52 @@ OUTCOMES = {
 def test_get_alternative_standings(m_get_bonus_wins, m_get_current_standings):
 
     m_get_current_standings.return_value = OUTCOMES
-    m_get_bonus_wins.return_value = Counter({'380.l.765649.t.6': 2,
-                                             '380.l.765649.t.5': 2,
-                                             '380.l.765649.t.7': 2,
-                                             '380.l.765649.t.10': 2})
+    m_get_bonus_wins.return_value = Counter(
+        {
+            "380.l.765649.t.6": 2,
+            "380.l.765649.t.5": 2,
+            "380.l.765649.t.7": 2,
+            "380.l.765649.t.10": 2,
+        }
+    )
 
     m_lg = mock.Mock()
     m_lg.teams.return_value = TEAMS
 
     actual = doubleheader.get_alternative_standings(m_lg)
 
-    expected = pd.DataFrame({'team_key': ['380.l.765649.t.6',
-  '380.l.765649.t.10',
-  '380.l.765649.t.7',
-  '380.l.765649.t.5',
-  '380.l.765649.t.4',
-  '380.l.765649.t.1',
-  '380.l.765649.t.8',
-  '380.l.765649.t.3',
-  '380.l.765649.t.9',
-  '380.l.765649.t.2'],
- 'team_name': ['Shady',
-  'Easy Drake oven',
-  'Comeback Train',
-  'BetterGoEatSome Soup',
-  'The Gurley Show',
-  '...brown do for you',
-  "Sy's Slam-Dunk Team",
-  'Yolo swag 420 dab',
-  'Elementary Watson!',
-  'Goal #1 Draft Pick'],
- 'wins': [12, 10, 7, 7, 7, 7, 6, 6, 4, 4],
- 'bonus_wins': [2, 2, 2, 2, 0, 0, 0, 0, 0, 0],
- 'total_wins': [14, 12, 9, 9, 7, 7, 6, 6, 4, 4],
- 'ties': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]})
+    expected = pd.DataFrame(
+        {
+            "team_key": [
+                "380.l.765649.t.6",
+                "380.l.765649.t.10",
+                "380.l.765649.t.7",
+                "380.l.765649.t.5",
+                "380.l.765649.t.4",
+                "380.l.765649.t.1",
+                "380.l.765649.t.8",
+                "380.l.765649.t.3",
+                "380.l.765649.t.9",
+                "380.l.765649.t.2",
+            ],
+            "team_name": [
+                "Shady",
+                "Easy Drake oven",
+                "Comeback Train",
+                "BetterGoEatSome Soup",
+                "The Gurley Show",
+                "...brown do for you",
+                "Sy's Slam-Dunk Team",
+                "Yolo swag 420 dab",
+                "Elementary Watson!",
+                "Goal #1 Draft Pick",
+            ],
+            "wins": [12, 10, 7, 7, 7, 7, 6, 6, 4, 4],
+            "bonus_wins": [2, 2, 2, 2, 0, 0, 0, 0, 0, 0],
+            "total_wins": [14, 12, 9, 9, 7, 7, 6, 6, 4, 4],
+            "ties": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        }
+    )
 
     pd.testing.assert_frame_equal(expected, actual)
 
@@ -110,12 +122,16 @@ def test_get_bonus_wins(m_open):
 
     actual = doubleheader.get_bonus_wins()
 
-    expected = Counter({'380.l.765649.t.6': 2,
-                        '380.l.765649.t.5': 2,
-                        '380.l.765649.t.7': 2,
-                        '380.l.765649.t.10': 2})
+    expected = Counter(
+        {
+            "380.l.765649.t.6": 2,
+            "380.l.765649.t.5": 2,
+            "380.l.765649.t.7": 2,
+            "380.l.765649.t.10": 2,
+        }
+    )
 
-    assert expected == actual 
+    assert expected == actual
 
 
 def test_get_top_half_teams():

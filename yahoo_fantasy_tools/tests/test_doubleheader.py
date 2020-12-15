@@ -3,6 +3,7 @@ Tests for doubleheader
 """
 
 import unittest.mock as mock
+from collections import Counter
 
 import pandas as pd
 
@@ -43,74 +44,44 @@ OUTCOMES = {
 
 
 @mock.patch("yahoo_fantasy_tools.doubleheader.get_current_standings")
-@mock.patch("yahoo_fantasy_tools.doubleheader.get_top_half_teams")
-def test_get_alternative_standings(m_top_half_teams, m_get_current_standings):
+@mock.patch("yahoo_fantasy_tools.doubleheader.get_bonus_wins")
+def test_get_alternative_standings(m_get_bonus_wins, m_get_current_standings):
 
     m_get_current_standings.return_value = OUTCOMES
-    m_top_half_teams.return_value = TOP_HALF_TEAMS
+    m_get_bonus_wins.return_value = Counter({'380.l.765649.t.6': 2,
+                                             '380.l.765649.t.5': 2,
+                                             '380.l.765649.t.7': 2,
+                                             '380.l.765649.t.10': 2})
 
     m_lg = mock.Mock()
     m_lg.teams.return_value = TEAMS
 
     actual = doubleheader.get_alternative_standings(m_lg)
 
-    expected = pd.DataFrame(
-        {
-            "team_key": [
-                "380.l.765649.t.10",
-                "380.l.765649.t.4",
-                "380.l.765649.t.7",
-                "380.l.765649.t.6",
-                "380.l.765649.t.5",
-                "380.l.765649.t.8",
-                "380.l.765649.t.1",
-                "380.l.765649.t.3",
-                "380.l.765649.t.9",
-                "380.l.765649.t.2",
-            ],
-            "team_name": [
-                "Easy Drake oven",
-                "The Gurley Show",
-                "Comeback Train",
-                "Shady",
-                "BetterGoEatSome Soup",
-                "Sy's Slam-Dunk Team",
-                "...brown do for you",
-                "Yolo swag 420 dab",
-                "Elementary Watson!",
-                "Goal #1 Draft Pick",
-            ],
-            "doubleheader_wins": [11, 7, 8, 13, 8, 6, 7, 6, 4, 4],
-            "doubleheader_losses": [4, 8, 7, 2, 7, 9, 8, 9, 11, 11],
-            "wins": [10, 7, 7, 12, 7, 6, 7, 6, 4, 4],
-            "losses": [4, 7, 7, 2, 7, 8, 7, 8, 10, 10],
-            "ties": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            "percentage": [
-                0.714,
-                0.5,
-                0.5,
-                0.857,
-                0.5,
-                0.429,
-                0.5,
-                0.429,
-                0.286,
-                0.286,
-            ],
-            "doubleheader_percentage": [
-                0.7333333333333333,
-                0.4666666666666667,
-                0.5333333333333333,
-                0.8666666666666667,
-                0.5333333333333333,
-                0.4,
-                0.4666666666666667,
-                0.4,
-                0.26666666666666666,
-                0.26666666666666666,
-            ],
-        }
-    )
+    expected = pd.DataFrame({'team_key': ['380.l.765649.t.6',
+  '380.l.765649.t.10',
+  '380.l.765649.t.7',
+  '380.l.765649.t.5',
+  '380.l.765649.t.4',
+  '380.l.765649.t.1',
+  '380.l.765649.t.8',
+  '380.l.765649.t.3',
+  '380.l.765649.t.9',
+  '380.l.765649.t.2'],
+ 'team_name': ['Shady',
+  'Easy Drake oven',
+  'Comeback Train',
+  'BetterGoEatSome Soup',
+  'The Gurley Show',
+  '...brown do for you',
+  "Sy's Slam-Dunk Team",
+  'Yolo swag 420 dab',
+  'Elementary Watson!',
+  'Goal #1 Draft Pick'],
+ 'wins': [12, 10, 7, 7, 7, 7, 6, 6, 4, 4],
+ 'bonus_wins': [2, 2, 2, 2, 0, 0, 0, 0, 0, 0],
+ 'total_wins': [14, 12, 9, 9, 7, 7, 6, 6, 4, 4],
+ 'ties': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]})
 
     pd.testing.assert_frame_equal(expected, actual)
 
@@ -130,15 +101,26 @@ def test_get_current_standings():
     assert expected == actual
 
 
+@mock.patch("yahoo_fantasy_tools.doubleheader.shelve.open")
+def test_get_bonus_wins(m_open):
 
-@mock.patch("yahoo_fantasy_tools.doubleheader.get_current_points")
-def test_get_top_half_teams(m_get_current_points):
+    db = {"15": POINTS, "16": POINTS}
 
-    m_get_current_points.return_value = POINTS
+    m_open.return_value.__enter__.return_value = db
 
-    m_lg = mock.Mock()
+    actual = doubleheader.get_bonus_wins()
 
-    actual = doubleheader.get_top_half_teams(m_lg)
+    expected = Counter({'380.l.765649.t.6': 2,
+                        '380.l.765649.t.5': 2,
+                        '380.l.765649.t.7': 2,
+                        '380.l.765649.t.10': 2})
+
+    assert expected == actual 
+
+
+def test_get_top_half_teams():
+
+    actual = doubleheader.get_top_half_teams(POINTS)
 
     expected = TOP_HALF_TEAMS
 

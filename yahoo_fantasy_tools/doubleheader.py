@@ -41,18 +41,18 @@ def get_alternative_standings(lg, current_week):
         {
             "team_name": [tms[key]["name"] for key in standings.keys()],
             "doubleheader_wins": [
-                int(val["wins"]) + top_half_counts.get(key, 0)
+                val["wins"] + top_half_counts.get(key, 0)
                 for key, val in standings.items()
             ],
             "points_for": [val["points_for"] for val in standings.values()],
             "doubleheader_losses": [
-                int(val["losses"]) + (current_week - top_half_counts.get(key, 0))
+                val["losses"] + (val["wins"] + val["losses"] - top_half_counts.get(key, 0))
                 for key, val in standings.items()
             ],
-            "wins": [int(val["wins"]) for val in standings.values()],
-            "losses": [int(val["losses"]) for val in standings.values()],
-            "ties": [int(val["ties"]) for val in standings.values()],
-            "percentage": [float(val["percentage"]) for val in standings.values()],
+            "wins": [val["wins"] for val in standings.values()],
+            "losses": [val["losses"] for val in standings.values()],
+            "ties": [val["ties"] for val in standings.values()],
+            "percentage": [val["percentage"] for val in standings.values()],
         }
     )
 
@@ -77,14 +77,31 @@ def get_current_standings(lg):
 
     """
 
-    s = lg.standings()
+    standings = lg.standings()
 
-    standings = {}
-    for team in s:
-        standings[team["team_key"]] = team["outcome_totals"]
-        standings[team["team_key"]]["points_for"] = float(team["points_for"])
+    return {team["team_key"]: transform_team(team) for team in standings}
 
-    return standings
+
+def transform_team(team):
+    """ Grabs the outcome totals and points for from a team.
+
+    Parameters
+    ----------
+    team : dict
+        A team as returned by [yahoo_fantasy_api.League.standings()]
+
+    Returns
+    -------
+    dict
+
+    """
+    d = team["outcome_totals"]
+    d["wins"] = int(d["wins"])
+    d["losses"] = int(d["losses"])
+    d["ties"] = int(d["ties"])
+    d["percentage"] = float(d["percentage"])
+    d["points_for"] = float(team["points_for"])
+    return d
 
 
 def get_top_half_teams(lg, week):

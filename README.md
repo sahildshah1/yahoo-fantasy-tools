@@ -18,6 +18,8 @@ football. See details [here.](https://www.theringer.com/nfl/2019/8/6/20755201/fa
 
 
 
+
+
 To get alternative standings under the doubleheader system: 
 
 ``` 

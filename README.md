@@ -15,6 +15,9 @@ This tool requires an API key from Yahoo. See instructions [here.](https://yahoo
 The doubleheader system is is an alternative scoring system for fantasy 
 football. See details [here.](https://www.theringer.com/nfl/2019/8/6/20755201/fantasy-football-league-settings-improvement-ideas)
 
+
+
+
 To get alternative standings under the doubleheader system: 
 
 ``` 
